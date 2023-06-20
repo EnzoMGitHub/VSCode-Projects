@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QPushButton, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton, QListWidget
 
 # How to create a button
 # Button Class
@@ -11,10 +11,25 @@ class UiStuffs(QWidget):
         self.initUI()
     # Initializes the user interface
     def initUI(self):
+        layout = QVBoxLayout()
+
+        # Creating a QlistWidget
+        list_widget = QListWidget(self)
+        list_widget.addItem("Item 1")
+        list_widget.addItem("Item 2")
+        list_widget.addItem("Item 3")
+        layout.addWidget(list_widget)
+
+        # Create a Qlabel
+        label = QLabel("This is a label", self)
+        layout.addWidget(label)
+
+        # Creating a QPushButton
         button = QPushButton('Click me', self) # makes a button object and stores it in the button variable, the string is the text that is shown on the button
         button.clicked.connect(self.buttonClicked) # When the button is clicked it calls the buttonClicked function
         button.move(50, 50) # moves the button to x:50 y:50
         
+        self.setLayout(layout)
         self.show() # shows the button object
 
     # This is the function that is called when the button object is clicked
