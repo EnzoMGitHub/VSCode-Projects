@@ -1,69 +1,67 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QVBoxLayout, QLabel, QPushButton, QListWidget
 from PyQt5.QtGui import QFont
+from PyQt5.QtCore import Qt
 
-class Example(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.initUI()
+app = QApplication([])
+window = QMainWindow()
+layout = QVBoxLayout()
+widget = QWidget()
+widget.setLayout(layout)
+window.setCentralWidget(widget)
 
-    def initUI(self):
-        # layout
-        layout = QVBoxLayout()
-        widget = QWidget()
-        widget.setLayout(layout)
-        window.setCentralWidget(widget)
-        # buttonOne
-        buttonOne = QPushButton('XX/XX/XXXX', self)
-        buttonOne.clicked.connect(self.buttonClicked)
-        buttonOne.setGeometry(50,100,100,50)
-        buttonOne.move(50,50)
-        layout.addWidget(buttonOne)
+def buttonOneClicked():
+    print("1")
 
-        # buttonTwo
-        buttonTwo = QPushButton('XX/XX/XXXX', self)
-        buttonTwo.clicked.connect(self.buttonClicked)
-        buttonTwo.move(100, 150)
-        buttonTwo.setGeometry(50,100,100,50)
-        layout.addWidget(buttonTwo)
+def buttonTwoClicked():
+    print("2")
 
-        # buttonThree
-        buttonThree = QPushButton('XX/XX/XXXX', self)
-        buttonThree.clicked.connect(self.buttonClicked)
-        buttonThree.setGeometry(50,100,100,50)
-        buttonThree.move(150, 100)
-        layout.addWidget(buttonThree)
+def buttonThreeClicked():
+    print("3")
 
-        # buttonFour
-        buttonFour = QPushButton('XX/XX/XXXX', self)
-        buttonFour.clicked.connect(self.buttonClicked)
-        buttonFour.setGeometry(50,100,100,50)
-        buttonFour.move(150, 100)
-        layout.addWidget(buttonFour)
+def buttonFourClicked():
+    print("4")
 
-        # buttonFive
-        buttonFive = QPushButton('XX/XX/XXXX', self)
-        buttonFive.clicked.connect(self.buttonClicked)
-        buttonFive.setGeometry(50,100,100,50)
-        buttonFive.move(150, 100)
-        layout.addWidget(buttonFive)
+def buttonFiveClicked():
+    print("5")
 
-        # label
-        label = QLabel("Weather App",self)
-        label.move(0,0)
-        label.setFont(QFont("Arial",25, QFont.Bold))
-        layout.addWidget(label)
+# Qlabel
+label = QLabel("Weather App")
+label.setFont(QFont("Arial", 25, QFont.Bold))
+layout.addWidget(label, alignment=Qt.AlignTop)  # Set alignment for the label
+
+# ButtonOne
+buttonOne = QPushButton('Show the weather for XX/XX/XXXX')
+buttonOne.clicked.connect(buttonOneClicked)
+buttonOne.setFixedSize(900,100)
+layout.addWidget(buttonOne, alignment=Qt.AlignCenter)
+
+# ButtonTwo
+buttonTwo = QPushButton('Show the weather for XX/XX/XXXX')
+buttonTwo.clicked.connect(buttonTwoClicked)
+buttonTwo.setFixedSize(900,100)
+layout.addWidget(buttonTwo, alignment=Qt.AlignCenter)
+
+# ButtonThree
+buttonThree = QPushButton('Show the weather for XX/XX/XXXX')
+buttonThree.clicked.connect(buttonThreeClicked)
+buttonThree.setFixedSize(900,100)
+layout.addWidget(buttonThree, alignment=Qt.AlignCenter)
+
+# ButtonFour
+buttonFour = QPushButton('Show the weather for XX/XX/XXXX')
+buttonFour.clicked.connect(buttonFourClicked)
+buttonFour.setFixedSize(900,100)
+layout.addWidget(buttonFour, alignment=Qt.AlignCenter)
+
+# ButtonFive
+buttonFive = QPushButton('Show the weather for XX/XX/XXXX')
+buttonFive.clicked.connect(buttonFiveClicked)
+buttonFive.setFixedSize(900,100)
+layout.addWidget(buttonFive, alignment=Qt.AlignCenter)
 
 
-    def buttonClicked(self):
-        print('Button clicked')
 
-    
 
-if __name__ == '__main__':
-    app = QApplication([])
-    window = QMainWindow()
-    ex = Example()
-    
-    window.setFixedSize(1000,1000)
-    window.show()
-    app.exec_()
+window.setFixedSize(1000, 1000)
+window.show()
+app.exec_()
